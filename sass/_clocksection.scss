@@ -1,0 +1,147 @@
+.clock .container {
+  // @extend %display-flex;
+  position: relative;
+
+  .wrapper {
+    @extend %display-flex;
+    background: transparent;
+    flex-direction: column;
+    max-width: 650px;
+    padding: 2.5rem 2.5rem 0;
+    border-radius: 10px;
+
+    // border: 1px solid yellowgreen;
+
+    .clock-box {
+      // border: 1px solid red;
+      color: rgb(148, 92, 208);
+      position: relative;
+      @extend %display-flex;
+      gap: 5px;
+      cursor: pointer;
+
+      .time {
+        @extend %display-flex;
+
+        .hours, .colon, .minutes {
+          @extend %display-flex;
+          padding: 0 0.8rem;
+          line-height: 8rem;
+          font-weight: 600;
+          font-family: $fontSec;
+        
+        }
+        
+        .hours, .minutes {
+          // border: 1px solid blue;
+          font-size: 20vmin;
+          height: 10rem;
+        }
+        
+        .colon {
+          font-size: 4rem;
+        }
+        
+        .right-box {
+          // border: 1px solid blue;
+          height: 25vmin;
+          position: relative;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex-direction: column;
+
+          .seconds, .current-day {
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-family: $fontSec;
+          }
+        } // right-box
+      } // time      
+    } // clock-box
+  }
+}
+
+.dot-menu-btn {
+  // border: 1px solid purple;
+  cursor: pointer;  
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-40px, 100%);
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55);
+  visibility: hidden; // (1)
+  opacity: 0; // (2)
+
+  &:hover {
+    color: rgb(148, 92, 208);
+  }
+}
+
+.dot-menu {
+  z-index: 9999;
+  background: snow;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(100%, 0);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.menu-item {
+  @extend %display-flex;
+  gap: 5px;
+}
+
+.clock-format-text {
+  color: rgb(148, 92, 208);
+  font-size: 0.7rem;
+  font-weight: bolder;
+}
+
+.format-switch-btn {
+  width: 30px;
+  height: 15px;
+  border-radius: 3rem;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.7), inset 2px 2px 4px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  @extend %display-flex;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: gray;
+    border-radius: 50%;
+    box-shadow: 0 5px 25px gray;
+    transform: translateX(-55%);
+    transition: 0.3s ease;
+   
+  }
+
+  &.active {
+    background: #c6cbeb;
+    box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.7), inset 2px 2px 4px rgba(0, 0, 0, 0.55);
+  }
+  
+  &.active::before {
+    background: rgb(148, 92, 208);
+    box-shadow: 0 15px 25px rgb(102, 63, 144);
+    transform: translateX(55%);
+  }
+}
+
+
+

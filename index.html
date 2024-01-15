@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+  <title>[Project] Momentum App</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- JS Section -->
+  <script src="app1.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <i class="fas fa-user user-icon"></i>
+    <div id="settings" class="settings-container">
+      <div class="name-container">
+        <h2 class="title">
+          Hello, 
+        </h2>
+        <div class="input-name">
+          <input type="text" class="name" placeholder="Name here">
+          <i class="fas fa-sync sync-namebtn"></i>
+        </div>
+      </div>
+
+      <div class="settings">
+        <!-- calendar area -->
+        <div class="calendar">
+          <div class="calendar-container">
+      
+            <div class="leftbox">
+              <p id="cal-date">01</p>
+              <p id="cal-day">Sunday</p>
+            </div>
+            
+            <div class="rightbox">
+              <p id="cal-month">January</p>
+              <p id="cal-year">0000</p>
+            </div>
+      
+          </div>
+        </div> 
+
+
+        <!-- add quote -->
+        <div class="add-quote">
+          <form id="addQuoteForm">
+            <input type="text" id="newQuote" placeholder="Add quote">
+            <button id="addquote-btn" type="submit">Add</button>
+          </form>
+          
+        </div>
+      </div>
+
+    </div>
+  </header> 
+
+  <main>
+    <!-- Clock Section -->
+    <section class="clock">
+      <div class="container">
+
+        <div class="clock-format-menu">
+          <i class="fas fa-ellipsis-h dot-menu-btn"></i>
+          <ul class="dot-menu">
+            <li class="menu-item">
+              <span class="clock-format-text">24-hour format</span>
+              <div class="format-switch-btn" data-format="12"></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="wrapper">
+
+          <div class="clock-box">
+            <div class="time">
+              <span class="hours">00</span>
+              <span class="colon">:</span>
+              <span class="minutes">00</span>
+
+              <div class="right-box">
+                <span class="seconds">00</span>
+                <span class="current-day">Day</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Greeting Section -->
+    <section class="greeting">
+      <div class="container"></div>
+    </section>
+
+    <!-- Main Focus Section -->
+    <section class="focus">
+      <div class="focus-container">
+        <div class="ask-container">
+          <div class="ask-focus">
+            <h3>What is your main focus today?</h3>
+    
+            <form class="mainfocus-form">
+              <input 
+                type="text" 
+                name="content"
+                id="focus-content" 
+              />
+              <button class="addfocus-btn" type="submit"><i class="fas fa-arrow-right"></i></button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="show-container">
+          <div class="show-focus">
+            <p>Today</p>
+    
+            <div class="focus-item">
+    
+              <div class="focus-content">
+                <span>demo text</span>
+              </div>    
+            </div>
+          </div>  
+        
+      </div> 
+    </section>
+
+    <!-- Quote Section -->
+
+    <section class="quote-generator">
+      <div class="outer-container">
+        <p id="quote-display"></p>
+        <div class="change-btns">
+          <button>
+            <i class="fas fa-redo-alt refreshquote-icon"></i>
+          </button>
+  
+          <button>
+            <i class="far fa-plus addquote-icon"></i>
+          </button>
+        </div>  
+      </div>
+    </section>
+
+    <!-- To Do List Section -->
+    <section class="to-do-list">
+      <div class="app">
+        <h2><i class="fas fa-tasks to-do-icon"></i></h2>
+        <div class="container">
+          
+          <form class="new-todo-form">
+            <input 
+              type="text" 
+              name="content"
+              id="content" 
+              placeholder="What to do?"
+            />
+            <button class="add-btn" type="submit">Add</button>
+          </form>
+
+          <div class="tasks">
+            <p>to do</p>
+
+            <div class="todo-list">
+
+              <!-- <div class="todo-item done">
+                <label>
+                  <input type="checkbox" />
+                </label>
+      
+                <div class="todo-content">
+                  <input type="text" value="e.g. make dinner" readonly />
+                </div>
+        
+                <div class="actions">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </div>
+              </div> -->
+  
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

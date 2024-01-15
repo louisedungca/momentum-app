@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Quote Generator</title>
+</head>
+<body>
+  <h1>Random Quote Generator</h1>
+
+  <!-- Display a random quote -->
+  <div id="quoteDisplay"></div>
+
+  <!-- HTML form for adding new quotes -->
+  <form id="addQuoteForm">
+    <label for="newQuote">New Quote:</label>
+    <input type="text" id="newQuote" placeholder="Enter a new quote">
+    <button type="submit">Add Quote</button>
+  </form>
+
+  <!-- Display the list of quotes -->
+  <div id="quotesList"></div>
+
+  <script>
+    // Initialize quotes array with saved quotes from local storage, or an empty array
+    var quotesArray = JSON.parse(localStorage.getItem("quotes")) || [];
+
+    // Get references to HTML elements
+    var quoteDisplay = document.getElementById("quoteDisplay");
+    var addQuoteForm = document.getElementById("addQuoteForm");
+    var newQuoteInput = document.getElementById("newQuote");
+    var quotesList = document.getElementById("quotesList");
+
+    // Function to generate and display random quote
+    function displayRandomQuote() {
+      var randomIndex = Math.floor(Math.random() * quotesArray.length);
+      quoteDisplay.textContent = "Random Quote: " + quotesArray[randomIndex];
+    }
+
+    // Function to display the list of quotes
+    function displayQuotes() {
+      quotesList.innerHTML = ""; // Clear previous content
+
+      // Create an unordered list to display quotes
+      var ul = document.createElement("ul");
+
+      // Loop through the quotes and create list items
+      for (var i = 0; i < quotesArray.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = quotesArray[i];
+        ul.appendChild(li);
+      }
+
+      // Append the list to the quotes list div
+      quotesList.appendChild(ul);
+    }
+
+    // Event listener for the form submission
+    addQuoteForm.addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the user's input
+      var newQuote = newQuoteInput.value.trim();
+
+      // Check if the input is not empty
+      if (newQuote !== "") {
+        // Add the new quote to the array
+        quotesArray.push(newQuote);
+
+        // Clear the input field
+        newQuoteInput.value = "";
+
+        // Update the display to show the updated list of quotes
+        displayQuotes();
+
+        // Save the updated quotes array to local storage
+        localStorage.setItem("quotes", JSON.stringify(quotesArray));
+      }
+    });
+
+    // Initial display of a random quote and the list of quotes
+    displayRandomQuote();
+    displayQuotes();
+  </script>
+</body>
+</html>

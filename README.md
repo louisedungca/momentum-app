@@ -26,15 +26,15 @@ Users can add and display their main focus for the day directly on the homepage,
 
 A touch of inspiration is added with a randomly generated quote on the homepage, offering daily motivation.
 
-### 6. Todo List Management
-
-The app facilitates efficient task management with a Todo list feature, allowing users to add, view, edit, and delete tasks directly on the homepage. The Todo list functionality incorporates Create, Read, Update, and Delete (CRUD) methods.
-
-### 7. Quote Contribution
+### 6. Quote Contribution
 
 Users have the power to contribute to the motivational atmosphere by adding new quotes to the Momentum app, fostering a collaborative and uplifting environment.
 
-## Responsive Design
+### 7. Todo List Management
+
+The app facilitates efficient task management with a Todo list feature, allowing users to add, view, edit, and delete tasks directly on the homepage. The Todo list functionality incorporates Create, Read, Update, and Delete (CRUD) methods.
+
+## 8. Responsive Design
 
 The Momentum app is designed with a responsive layout, drawing inspiration from the Momentum extension. This ensures a seamless and enjoyable user experience across various devices, adapting to different screen sizes, from desktops to tablets and smartphones.
 

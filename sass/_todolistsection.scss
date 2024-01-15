@@ -1,0 +1,210 @@
+@import "todo-mediaq";
+
+.to-do-list {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  z-index: 9999;
+
+  .app {
+    width: min(85vw, 350px);
+    margin: 0 30px 30px;
+    padding: 35px 0;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .to-do-icon {
+      color: rgb(255, 250, 250);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    
+    .container {
+      padding: 2rem 1.2rem;
+      background: snow;
+      box-shadow: $boxShadow;
+      border-radius: 0.8rem;
+      display: none;
+      transition: 0.3s ease;
+      // border: 2px solid greenyellow;
+
+      &.active {
+        display: block;
+      }
+
+      .new-todo-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #edeef0;
+        border-radius: 30px;
+
+        input {
+          flex: 1;
+          border: none;
+          outline: none;
+          background: transparent;
+          padding: 10px;
+          color: $darkMain;
+          text-shadow: none;
+
+          &::placeholder {
+            color: darkgray;
+            text-shadow: none;
+          }
+        }
+      
+        button {
+          position: relative;
+          border: none;
+          outline: none;
+          padding: 1rem 2rem;
+          background: $darkMain;
+          color: $white;
+          font-size: 0.8rem;
+          border-radius: 40px;
+          cursor: pointer;
+
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+      } // form
+
+      .tasks p {
+        padding: 0.3rem 0.5rem;
+        font-size: 1.2rem;
+        color: $grayer;
+        text-shadow: none;
+        font-family: $fontCursive;
+        font-weight: 500;
+        letter-spacing: 0.5rem;
+        text-align: center;
+      }
+
+      .todo-list {
+        padding: 0.4rem;
+        max-height: 135px;
+        overflow-y: scroll;
+      }
+
+      /* scrollbar */
+      ::-webkit-scrollbar {
+        width: 3px; }
+
+      ::-webkit-scrollbar-track {
+        background: #e1e1e1; 
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: $lightMain;
+        
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: $darkMain; 
+      }
+
+      .todo-item {
+        // border: 1px solid violet;
+        @extend %display-flex;
+        padding: 0.6rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        gap: 0.5rem;
+        width: 100%;
+
+        label {
+          cursor: pointer;
+
+          input[type = "checkbox"] {
+            position: relative;
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 2px solid #e1e1e1;
+
+            &::before {
+              content: "";
+              position: absolute;
+              transform: translate(-50%, -50%);
+              top: 50%;
+              left: 50%;
+            }
+
+            &:checked {
+              background: #e1e1e1;
+              border-color: $lightMain;
+
+              &::before {
+                position: absolute;
+                content: "\f00c";
+                color: $darkMain;
+                font-size: 0.75rem;
+                font-weight: 900;
+                font-family: "Font Awesome 5 Free";
+              }
+            }
+          }
+        }
+
+        .todo-content {
+          height: 1.2rem;
+          
+          textarea {
+            color: $darkMain;
+            font-size: 0.8rem;
+            padding: 0 0.5rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            text-shadow: none;
+            resize: none;
+            word-break: break-word;
+          }
+        }
+
+        .actions {
+          @extend %display-flex;
+
+          button {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            border: none;
+            outline: none;
+
+            &:hover {
+              opacity: 0.75;
+            }
+          }
+
+          .edit {
+            margin-right: 0.5rem;
+            background-color: $darkMain;
+          }
+
+          .delete {
+            background-color: $grayer;
+          }
+        }
+      } 
+
+      .todo-item.done .todo-content textarea {
+        text-decoration: line-through;
+        color: $grayer;
+      }
+    }  
+  }
+}
+
+

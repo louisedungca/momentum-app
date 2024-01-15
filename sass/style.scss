@@ -1,0 +1,31 @@
+@import "format", 
+"header";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $fontMain;
+  color: $white;
+  list-style: none;
+  text-shadow: $textShadow;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  @extend %display-flex;
+  flex-direction: column;
+}
+
+main {
+  @extend %display-flex;
+  flex-direction: column;
+}
+
+@import "greeting",
+"focus",
+"clocksection",
+"todolistsection",
+"quotes";

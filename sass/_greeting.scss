@@ -1,0 +1,9 @@
+.greeting{
+  //border: 1px solid violet;
+  @extend %display-flex;
+
+  .container {
+    font-size: 6vmin;
+    font-weight: 600;
+  }
+}

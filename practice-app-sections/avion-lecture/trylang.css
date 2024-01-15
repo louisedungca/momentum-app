@@ -1,0 +1,5 @@
+.wrap-text-input {
+  width: 300px; /* Set the width of the textarea */
+  height: 100px; /* Set the height of the textarea for multiple lines */
+  overflow: auto; /* Add scrollbars if needed when the text overflows */
+}

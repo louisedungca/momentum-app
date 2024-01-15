@@ -1,0 +1,52 @@
+.quote-generator {
+  // border: 5px dotted pink;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 10px auto 10px;
+  text-align: center;
+  padding: 0.5rem;
+  width: 85%;
+  z-index: 9999;
+
+  .outer-container {
+    // border: 1px solid yellowgreen;
+    @extend %display-flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.8rem 0.5rem 0;
+
+    p {
+      font-size: clamp(0.6rem, 2.3vmin, 1rem);
+      font-weight: 900;
+      text-shadow: $textShadow;
+    }
+
+    .change-btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.8rem;
+      opacity: 0.6;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }  
+  }
+}
+
+@media (width < 380px) {
+  .quote-generator {
+    width: 80%;
+  }
+}

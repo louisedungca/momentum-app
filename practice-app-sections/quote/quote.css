@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Comfortaa:wght@300&family=Poppins:wght@200;300;400&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+  list-style: none;
+}
+
+.quote-generator {
+  border: 5px dotted pink;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 10px auto 10px;
+  text-align: center;
+  padding: 0.5rem;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.outer-container {
+  border: 1px solid yellowgreen;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem 0.5rem 0;
+  transition: 0.2s ease-in-out;
+}
+
+.change-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .0.5rem;
+  display: none;
+  transition: 0.2s ease-in-out;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.2rem;
+}
+
+
+#author {
+  display: none;
+}

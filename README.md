@@ -12,7 +12,7 @@ Users can easily input their name, creating a personalized homepage tailored to 
 
 ### 2. Real-Time Clock Display
 
-The homepage displays the current time, ensuring users stay on track and organized throughout the day.
+The homepage displays the current time (with 12-hour or 24-hour setting), ensuring users stay on track and organized throughout the day.
 
 ### 3. Dynamic Greetings
 

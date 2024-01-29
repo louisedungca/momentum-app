@@ -23,15 +23,38 @@
   const quoteDisplay = document.getElementById("quote-display");
   const addQuoteForm = document.getElementById("addQuoteForm");
   const newQuoteInput = document.getElementById("newQuote");
+  const container = document.querySelector(".outer-container");
+  const changeBtns = document.querySelector(".change-btns");
 
   // for To Do List
   const toDoIcon = document.querySelector(".to-do-icon");
   const toDoContainer = document.querySelector(".app .container");
 
-  // BG Change JS
-  let totalBGCount = 18;
+  // global vars
+  const today = new Date();
+  const dayName = today.toLocaleString("default", { weekday: "short" });
+  const calDate = today.toLocaleString("default", { day: "2-digit" });
+  const calDay = today.toLocaleString("default", { weekday: "long" });
+  const calMonth = today.toLocaleString("default", { month: "long" });	
+  const calYear = today.getFullYear();
 
+  const givenQuotes = [
+    'A wise philosopher once said, "Go, go, go."',
+    'Ang mundo ay isang malaking Quiapo, maraming snatcher, maagawan ka. Lumaban ka.',
+    'Pa-order naman ng kape, kailangan kong kabahan.',
+    'Mahal mo ba ako dahil kailangan mo ako, o kailangan mo ako kaya mahal mo ako?',
+    'Once, twice, three times more, gaano ba kadalas ang minsan?',
+    'Ang pera natin hindi basta-basta mauubos, pero ang pasensya ko, konting-konti na lang!',
+    "Ang buhay ay parang bato. It's hard.",
+    "Anong karapatan mong hingin ang bagay na ipinagdamot mong ibigay? I deserved an explanation. I deserved an acceptable reason.",
+  ];
+
+  const quotesArray = JSON.parse(localStorage.getItem("quotes")) || givenQuotes;
+
+  // BG Change JS
   function changeBG() {
+    let totalBGCount = 18;
+
     const num = Math.round(Math.random() * totalBGCount);
     document.body.background = "bgimages/" + num + ".jpeg";
     document.body.style.backgroundSize = "cover";
@@ -41,51 +64,47 @@
   changeBG();
 
   // Header JS
-  let username = localStorage.getItem("username");
-  nameInput.value = username;
+  function getName() {   
+    let username = localStorage.getItem("username");
+    nameInput.value = username;
 
-  userIcon.addEventListener("click", () => {
-    settings.classList.toggle("active");
-  });
-
-  // Get Name JS
-  function getName() {
-    
     nameInput.addEventListener("change", e => {
       localStorage.setItem("username", e.target.value);
+      window.location.reload();
     })
   }
-
-  window.addEventListener("load", getName); 
-
+  
   // Sync/Refresh Button JS
   function syncName() {
     window.location.reload();
   }
 
+  userIcon.addEventListener("click", () => {
+    settings.classList.toggle("active");
+  }); 
+  window.addEventListener("load", getName); 
   syncBtn.addEventListener("click", syncName);
 
   // Greeting JS
-  const hour = new Date().getHours();
-  const welcomeTypes = ["Good morning", "Good afternoon", "Good evening"];
-
-  let welcomeText = "";
+  function getWelcomeType() {
+    const hour = new Date().getHours();
+    const welcomeTypes = ["Good morning", "Good afternoon", "Good evening"];
 
     if (hour < 12) {
-      welcomeText = welcomeTypes[0];
+      return welcomeTypes[0];
+    } else if (hour < 18) {
+      return welcomeTypes[1];
+    } else {
+      return welcomeTypes[2];
     }
-    else if (hour < 18) {
-      welcomeText = welcomeTypes[1];
-    }
-    else {
-      welcomeText = welcomeTypes[2];
-    }
+  }
 
   function greetingLine() {
+    const welcomeText = getWelcomeType();
+
     if (nameInput.value === "") {
       greetingContainer.textContent = welcomeText + ", " + "Bestie.";
-    }
-    else {
+    } else {
       greetingContainer.textContent = welcomeText + ", " + nameInput.value + ".";
     }
   }
@@ -145,7 +164,6 @@
     let hours = today.getHours(); 
     let minutes = today.getMinutes(); 
     let seconds = today.getSeconds();
-
     
     if (seconds < 10) {
       seconds = "0" + seconds;
@@ -163,8 +181,6 @@
       hours = hours > 12 ? hours % 12 : hours;
     }
 
-    // console.log(formatValue);
-
     document.querySelector(".hours").innerHTML = hours;
     document.querySelector(".minutes").innerHTML = minutes;
     document.querySelector(".seconds").innerHTML = seconds;
@@ -174,15 +190,6 @@
   const updateClock = setInterval(clock, 1000);
 
   // for the current day and calendar 
-  const today = new Date();
-  const dayName = today.toLocaleString("default", { weekday: "short" });
-
-  const calDate = today.toLocaleString("default", { day: "2-digit" });
-  const calDay = today.toLocaleString("default", { weekday: "long" });
-  const calMonth = today.toLocaleString("default", { month: "long" });	
-  const calYear = today.getFullYear();
-
-
   document.querySelector(".current-day").innerHTML = dayName;
   document.getElementById("cal-month").innerHTML = calMonth;
   document.getElementById("cal-day").innerHTML = calDay;
@@ -194,19 +201,6 @@
     settings.classList.toggle("active");
   });
 
-  const givenQuotes = [
-    'A wise philosopher once said, "Go, go, go."',
-    'Ang mundo ay isang malaking Quiapo, maraming snatcher, maagawan ka. Lumaban ka.',
-    'Pa-order naman ng kape, kailangan kong kabahan.',
-    'Mahal mo ba ako dahil kailangan mo ako, o kailangan mo ako kaya mahal mo ako?',
-    'Once, twice, three times more, gaano ba kadalas ang minsan?',
-    'Ang pera natin hindi basta-basta mauubos, pero ang pasensya ko, konting-konti na lang!',
-    "Ang buhay ay parang bato. It's hard.",
-    "Anong karapatan mong hingin ang bagay na ipinagdamot mong ibigay? I deserved an explanation. I deserved an acceptable reason.",
-  ];
-
-  const quotesArray = JSON.parse(localStorage.getItem("quotes")) || givenQuotes;
-
   // Function to generate and display random quote
   function displayRandomQuote() {
     let randomIndex = Math.floor(Math.random() * quotesArray.length);
@@ -214,7 +208,7 @@
   }
 
   // Add quote
-  addQuoteForm.addEventListener("submit", function(event) {
+  function addNewQuote(event) {
     event.preventDefault();
 
     let newQuote = newQuoteInput.value.trim();
@@ -222,24 +216,18 @@
     if (newQuote !== "") {
       quotesArray.push(newQuote);
       newQuoteInput.value = "";
-
       localStorage.setItem("quotes", JSON.stringify(quotesArray));
     }
-  });
+  }
 
-  //  console.log(quotesArray);
+  addQuoteForm.addEventListener("submit", addNewQuote);
 
   function newQuoteArray() {
     displayRandomQuote();
-    refreshBtn.addEventListener('click', displayRandomQuote);
+    refreshBtn.addEventListener("click", displayRandomQuote);
   };
 
   window.addEventListener("load", newQuoteArray);
-
-
-  const container = document.querySelector(".outer-container");
-  const changeBtns = document.querySelector(".change-btns");
-  // console.log(changeBtns);
 
   container.addEventListener("mouseover", () => {
       changeBtns.style.display = "block";
@@ -248,7 +236,6 @@
   container.addEventListener("mouseout", () => {
       changeBtns.style.display = "none";
   });
-
 
   // To Do List JS
   toDoIcon.addEventListener("click", () => {
@@ -331,7 +318,6 @@
         }
 
         displayTodos();
-
       })
 
       edit.addEventListener('click', (e) => {
@@ -353,6 +339,5 @@
 
         displayTodos();
       })
-
     })
   }

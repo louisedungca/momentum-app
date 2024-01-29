@@ -204,6 +204,8 @@ body {
 }
 
 main {
+  min-height: 100vh;
+  max-height: 100vh;
   flex-direction: column;
 }
 
@@ -311,6 +313,9 @@ main {
   position: relative;
   gap: 5px;
   cursor: pointer;
+}
+.clock .container .wrapper .clock-box:hover {
+  opacity: 0.65;
 }
 .clock .container .wrapper .clock-box .time .hours, .clock .container .wrapper .clock-box .time .colon, .clock .container .wrapper .clock-box .time .minutes {
   padding: 0 0.8rem;

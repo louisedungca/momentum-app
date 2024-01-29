@@ -20,6 +20,8 @@ body {
 }
 
 main {
+  min-height: 100vh;
+  max-height: 100vh;
   @extend %display-flex;
   flex-direction: column;
 }

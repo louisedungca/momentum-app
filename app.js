@@ -245,6 +245,7 @@
   window.addEventListener('load', () => {
     todos = JSON.parse(localStorage.getItem('todos')) || [];
     const newTodoForm = document.querySelector('.new-todo-form');
+    const todoHeader = document.querySelector('.todo-header'); 
 
     newTodoForm.addEventListener('submit', e => {
       e.preventDefault();
@@ -256,7 +257,6 @@
       }
 
       todos.push(todo);
-
       localStorage.setItem('todos', JSON.stringify(todos));
 
       // Reset the form
